@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onEndOfSpeech() {
+                    Toast.makeText(MainActivity.this, "Stop speaking", Toast.LENGTH_SHORT).show();
                     System.out.println("speech endded ");
                     System.out.println("stop!");
                 }
@@ -164,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
             speak("opening whatsapp");
             whatsapp();
         } else if (convtxt.contains("call") || convtxt.contains("contact")) {
-            Toast.makeText(this, convtxt, Toast.LENGTH_SHORT).show();
+
             mkcall(convtxt);
         } else if ((convtxt.contains("open") || convtxt.contains("start")) && convtxt.contains("youtube")) {
             speak("opening youtube");
