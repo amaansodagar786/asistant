@@ -4,4 +4,6 @@
     <string name="open_activity_2" />
     <string name="button" />
     <string name="activity_2" />
+    <string name="start">start</string>
+    <string name="main_thing_in_the_whole_app">Main thing in the whole app</string>
 </resources>

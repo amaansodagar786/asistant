@@ -4,64 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".MainActivity">
 
-    <TextView
 
-        android:id="@+id/tv_result"
-        android:layout_width="89dp"
-        android:layout_height="46dp"
-        android:layout_above="@+id/newbutton"
-        android:layout_alignStart="@+id/newbutton"
-        android:layout_alignLeft="@+id/newbutton"
-        android:layout_alignEnd="@+id/newbutton"
-        android:layout_alignRight="@+id/newbutton"
-        android:text="@string/activity_1"
-        app:layout_constraintBottom_toTopOf="@+id/newbutton"
-        app:layout_constraintEnd_toEndOf="@+id/newbutton"
-        app:layout_constraintStart_toStartOf="@+id/newbutton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.883" />
-
-    <Button
-        android:id="@+id/newbutton"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:text="@string/open_activity_2"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="25dp"
+        android:clickable="true"
+        android:contentDescription="@string/main_thing_in_the_whole_app"
+        android:focusable="true"
+        android:onClick="startrecording"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.901" />
+        app:layout_constraintVertical_bias="0.518"
+        app:srcCompat="@drawable/ic_baseline_mic_24" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="startrecording"
-        android:text="@string/button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/newbutton"
-        app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintStart_toStartOf="@+id/newbutton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.575" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        android:onClick="opencam"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/button"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.148" />
+    <!--    <Button-->
+    <!--        android:id="@+id/button2"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:onClick="open"-->
+    <!--        android:text="onclick function "-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="@+id/button"-->
+    <!--        app:layout_constraintHorizontal_bias="0.51"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/button"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/button"-->
+    <!--        app:layout_constraintVertical_bias="0.119" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
