@@ -7,6 +7,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
@@ -39,6 +40,8 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
+
+    private String TAG;
     private SpeechRecognizer recognizer;
     private TextToSpeech tts;
 
@@ -68,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void speak(String msg) {
+        tts.setSpeechRate(-1);
         tts.speak(msg, TextToSpeech.QUEUE_FLUSH, null);
     }
 
@@ -184,6 +188,9 @@ public class MainActivity extends AppCompatActivity {
         } else if ((convtxt.contains("open") || convtxt.contains("start")) && convtxt.contains("camera")) {
             speak("sure !  Opening camera.... ");
             opencam();
+        } else if ((convtxt.contains("open") || convtxt.contains("start")) && convtxt.contains("google")) {
+            speak("sure !  Opening google.... ");
+            google();
         } else if ((convtxt.contains("take") || convtxt.contains("capture")) && (convtxt.contains("photo") || convtxt.contains("picture"))) {
             speak("sure !  Opening camera.... ");
             dispatchTakePictureIntent();
@@ -281,24 +288,24 @@ public class MainActivity extends AppCompatActivity {
 
 //    public void open(View view) {
 //
-////        newwiki();
 //
-////        final PackageManager pm = getPackageManager();
-////
-////        List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
-////        for (ApplicationInfo packageInfo : packages) {
-////////            all packages installed
-////            if (pm.getLaunchIntentForPackage(packageInfo.packageName) != null) {
-//////            only those packages which return runnable intent
-////                Log.d(TAG, "Installed package :" + packageInfo.packageName);
-////                Log.d(TAG, "Source dir : " + packageInfo.sourceDir);
-////                Log.d(TAG, "Launch Activity :" + pm.getLaunchIntentForPackage(packageInfo.packageName) + "\n");
+//
+//        final PackageManager pm = getPackageManager();
+//
+//        List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
+//        for (ApplicationInfo packageInfo : packages) {
+//////            all packages installed
+//            if (pm.getLaunchIntentForPackage(packageInfo.packageName) != null) {
+////            only those packages which return runnable intent
+//                Log.d(TAG, "Installed package :" + packageInfo.packageName);
+//                Log.d(TAG, "Source dir : " + packageInfo.sourceDir);
+//                Log.d(TAG, "Launch Activity :" + pm.getLaunchIntentForPackage(packageInfo.packageName) + "\n");
+//            }
+////            if (packageInfo.packageName.contains("facebook")) {
+////                Intent intent = pm.getLaunchIntentForPackage(packageInfo.packageName);
+////                startActivity(intent);
 ////            }
-//////            if (packageInfo.packageName.contains("facebook")) {
-//////                Intent intent = pm.getLaunchIntentForPackage(packageInfo.packageName);
-//////                startActivity(intent);
-//////            }
-////        }
+//        }
 //
 //    }
 /////////////////////////////////////////////////////////////////////////////////////////other testing
@@ -370,6 +377,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void playstore() {
         openappsforyou("com.android.vending");
+    }
+    public void google() {
+        openappsforyou("com.google.android.googlequicksearchbox");
     }
 
     public void youtube() {
