@@ -7,7 +7,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
@@ -23,6 +22,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -35,11 +35,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
+    public LottieAnimationView lottieAnimationView2;
+    boolean islottieAnimationView2 = false;
 
     private String TAG;
     private SpeechRecognizer recognizer;
@@ -51,8 +52,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-//        findbyid();
+        lottieAnimationView2 = findViewById(R.id.lottieAnimationView2);
+        lottieAnimationView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (islottieAnimationView2) {
+                    lottieAnimationView2.playAnimation();
+                    islottieAnimationView2 = false;
+                } else {
+                    lottieAnimationView2.pauseAnimation();
+                    islottieAnimationView2 = true;
+                }
+            }
+        });
         initioalizeTexttospeech();
         initializeresult();
     }
@@ -157,7 +169,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void response(String convtxt) {
-        if (convtxt.contains("hello")) {
+        if (convtxt.contains("hello")||convtxt.contains("hello edith")) {
+            speak("Hello i am edith.   what can i help you with ?");
+        } if (convtxt.contains("how can you help me")) {
             speak("Hello i am edith.   what can i help you with ?");
         } else if (convtxt.contains("i") && (convtxt.contains("want") || convtxt.contains("wanna")) || ((convtxt.contains("to"))) && (convtxt.contains("watch") || convtxt.contains("see")) && (convtxt.contains("movie") || convtxt.contains("movies") || convtxt.contains("youtube") || convtxt.contains("tv series") || convtxt.contains("videos") || convtxt.contains("season") || convtxt.contains("cartoon"))) {
             speak("ok ! opening youtube");
@@ -208,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
             gmail();
         } else if ((convtxt.contains("open") || convtxt.contains("start")) && (convtxt.contains("gallery") || convtxt.contains("photo") || convtxt.contains("photos"))) {
             speak("opening gallary....");
-            gallary();
+            gallery();
         } else if ((convtxt.contains("open") || convtxt.contains("start")) && (convtxt.contains("drive") || convtxt.contains("file") || convtxt.contains("storage"))) {
             speak("opening Drive....");
             drive();
@@ -358,7 +372,7 @@ public class MainActivity extends AppCompatActivity {
         openappsforyou("com.google.android.gm");
     }
 
-    public void gallary() {
+    public void gallery() {
         openappsforyou("com.google.android.apps.photos");
     }
 
@@ -378,6 +392,7 @@ public class MainActivity extends AppCompatActivity {
     public void playstore() {
         openappsforyou("com.android.vending");
     }
+
     public void google() {
         openappsforyou("com.google.android.googlequicksearchbox");
     }

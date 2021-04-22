@@ -6,4 +6,6 @@
     <string name="activity_2" />
     <string name="start">start</string>
     <string name="main_thing_in_the_whole_app">Main thing in the whole app</string>
+    <string name="team_quantum_develpoer"> © Team Quantum Developer</string>
+    <string name="static_logo">Static_logo</string>
 </resources>
